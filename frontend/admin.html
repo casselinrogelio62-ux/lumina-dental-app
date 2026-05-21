@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard | Lumina Dental</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        :root {
+            --brand-accent: #0f172a;
+            --brand-blue: #0ea5e9;
+            --bg-surface: #f8fafc;
+            --border-light: #e2e8f0;
+        }
+        body {
+            margin: 0; font-family: 'Plus Jakarta Sans', sans-serif;
+            background: var(--bg-surface); color: var(--brand-accent);
+        }
+        .admin-header {
+            background: white; padding: 20px 40px;
+            border-bottom: 1px solid var(--border-light);
+            display: flex; justify-content: space-between; align-items: center;
+        }
+        .admin-container { padding: 40px; max-width: 1200px; margin: 0 auto; }
+        .dashboard-card {
+            background: white; border-radius: 12px;
+            border: 1px solid var(--border-light);
+            box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05);
+            overflow: hidden;
+        }
+        table { width: 100%; border-collapse: collapse; text-align: left; }
+        th { background: #f1f5f9; padding: 16px 24px; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.05em; color: #64748b; border-bottom: 1px solid var(--border-light); }
+        td { padding: 16px 24px; border-bottom: 1px solid var(--border-light); font-size: 0.95rem; }
+        tr:last-child td { border-bottom: none; }
+        tr:hover { background: #f8fafc; }
+        .badge {
+            padding: 4px 10px; border-radius: 20px; font-size: 0.8rem; font-weight: 600;
+            background: #dbeafe; color: #1e40af;
+        }
+        .empty-state { padding: 40px; text-align: center; color: #64748b; }
+    </style>
+</head>
+<body>
+
+    <header class="admin-header">
+        <h2 style="margin: 0; display: flex; align-items: center; gap: 10px;">
+            <i data-lucide="layout-dashboard"></i> Panel de Citas
+        </h2>
+        <a href="/" style="color: var(--brand-blue); text-decoration: none; font-weight: 600;">Ver página web</a>
+    </header>
+
+    <div class="admin-container">
+        <h3 style="margin-top: 0; margin-bottom: 24px;">Reservaciones Recientes</h3>
+        
+        <div class="dashboard-card">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Paciente</th>
+                        <th>Contacto</th>
+                        <th>Motivo</th>
+                        <th>Fecha y Hora</th>
+                        <th>Estado</th>
+                    </tr>
+                </thead>
+                <tbody id="tabla-citas">
+                    <tr>
+                        <td colspan="5" class="empty-state">Cargando citas médicas...</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <script src="admin.js"></script>
+    <script>lucide.createIcons();</script>
+</body>
+</html>

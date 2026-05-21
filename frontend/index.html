@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Lumina Dental - Odontología estética y preventiva premium. Reserva tu valoración clínica en línea de forma rápida y segura.">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <script src="https://unpkg.com/lucide@latest" defer></script>
+    <link rel="stylesheet" href="styles.css">
+    
+    <title>Lumina Dental | Especialistas en Odontología Premium</title>
+</head>
+<body class="antialiased">
+
+    <div id="loader" aria-hidden="true">
+        <div class="spinner-premium"></div>
+    </div>
+
+    <div id="toast-notification" role="alert" aria-live="assertive">
+        <i data-lucide="check-circle" aria-hidden="true" class="toast-icon"></i>
+        <span id="toast-message">Operación exitosa</span>
+    </div>
+
+    <header id="header-nav">
+        <div class="container nav-content">
+            <a href="#" class="logo" data-target="inicio" aria-label="Ir a inicio">
+                <div class="logo-mark"><i data-lucide="sparkles" aria-hidden="true"></i></div>
+                <span>Lumina<span class="font-light">Dental</span></span>
+            </a>
+            
+            <nav aria-label="Navegación principal">
+                <ul class="nav-links">
+                    <li><button class="nav-btn active" data-target="inicio">Inicio</button></li>
+                    <li><button class="nav-btn" data-target="servicios">Especialidades</button></li>
+                    <li><button class="nav-btn" data-target="nosotros">La Clínica</button></li>
+                </ul>
+            </nav>
+
+            <div class="nav-actions">
+                <button class="btn btn-primary shadow-hover" data-target="reservar">Agenda tu cita</button>
+                <button class="mobile-menu-btn" aria-label="Abrir menú" aria-expanded="false" aria-controls="nav-links">
+                    <i data-lucide="menu" aria-hidden="true"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <main id="main-content">
+        
+        <section id="inicio" class="page-section active" aria-labelledby="hero-heading">
+            <div class="hero-wrapper">
+                <div class="container">
+                    <div class="hero-grid">
+                        <div class="hero-content reveal">
+                            <div class="trust-badge">
+                                <i data-lucide="shield-check" class="icon-sm"></i> Odontología Especializada
+                            </div>
+                            <h1 id="hero-heading" class="hero-title">
+                                Diseñamos la sonrisa que <span class="text-gradient">siempre has deseado</span>
+                            </h1>
+                            <p class="hero-subtitle">
+                                Tecnología digital, tratamientos sin dolor y especialistas altamente capacitados. Recupera tu salud bucal con la mejor experiencia clínica.
+                            </p>
+                            
+                            <div class="cta-group">
+                                <button class="btn btn-primary btn-lg" data-target="reservar">
+                                    Reservar Valoración <i data-lucide="arrow-right" class="icon-sm"></i>
+                                </button>
+                                <a href="https://wa.me/525512345678" target="_blank" class="btn btn-whatsapp btn-lg" rel="noopener">
+                                    <i data-lucide="message-circle" class="icon-sm"></i> Urgencias
+                                </a>
+                            </div>
+
+                            <div class="payment-trust mt-medium">
+                                <p class="text-xs text-muted font-medium uppercase tracking-wide">Pagos Seguros y Flexibles</p>
+                                <div class="payment-icons">
+                                    <i data-lucide="credit-card" aria-label="Tarjetas"></i>
+                                    <i data-lucide="smartphone" aria-label="Pagos Digitales"></i>
+                                    <span class="text-xs text-muted ml-2">+ Meses sin intereses (MSI)</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="hero-visual reveal delay-100">
+                            <div class="image-composition">
+                                <img src="https://images.unsplash.com/photo-1606811841689-23dfddce3e95?auto=format&fit=crop&q=80&w=1000" alt="Instalaciones modernas de Lumina Dental" class="main-img" fetchpriority="high">
+                                <div class="floating-stat glass-panel shadow-premium">
+                                    <div class="stat-icon bg-blue-100 text-blue-600"><i data-lucide="users"></i></div>
+                                    <div>
+                                        <div class="stat-value">+2,500</div>
+                                        <div class="stat-label">Pacientes Felices</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="servicios" class="page-section section-padding bg-slate-50" aria-labelledby="services-heading">
+            <div class="container">
+                <header class="section-header reveal text-center">
+                    <h2 id="services-heading" class="section-title">Nuestras Especialidades</h2>
+                    <p class="section-desc">Atención integral para toda la familia con los más altos estándares médicos.</p>
+                </header>
+
+                <div class="services-grid">
+                    <article class="service-card reveal hover-lift">
+                        <div class="icon-box"><i data-lucide="smile"></i></div>
+                        <h3>Ortodoncia Estética</h3>
+                        <p class="text-muted">Alineación perfecta para niños, adolescentes y adultos con brackets tradicionales o alineadores invisibles.</p>
+                    </article>
+
+                    <article class="service-card reveal delay-100 hover-lift">
+                        <div class="icon-box"><i data-lucide="shield"></i></div>
+                        <h3>Prótesis e Implantes</h3>
+                        <p class="text-muted">Recupera la función masticatoria y estética con implantes de titanio y coronas de porcelana pura.</p>
+                    </article>
+
+                    <article class="service-card reveal delay-200 hover-lift">
+                        <div class="icon-box"><i data-lucide="activity"></i></div>
+                        <h3>Endodoncia y Prevención</h3>
+                        <p class="text-muted">Salvamos tus piezas dentales mediante tratamientos de conducto especializados y limpiezas profundas.</p>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <section id="reservar" class="page-section section-padding booking-area" aria-labelledby="booking-heading">
+            <div class="container">
+                <div class="booking-grid">
+                    
+                    <div class="booking-context reveal">
+                        <h2 id="booking-heading" class="section-title">Agenda tu cita hoy mismo</h2>
+                        <p class="text-muted text-lg mb-extra">Asegura tu espacio en nuestra agenda. Tu valoración inicial incluye diagnóstico digital completo.</p>
+                        
+                        <div class="info-blocks">
+                            <div class="info-item">
+                                <div class="info-icon"><i data-lucide="map-pin"></i></div>
+                                <div>
+                                    <strong class="block text-dark">Ubicación Céntrica</strong>
+                                    <span class="text-sm text-muted">Av. Principal 123, Consultorio 402. Estacionamiento gratuito.</span>
+                                </div>
+                            </div>
+                            <div class="info-item mt-medium">
+                                <div class="info-icon"><i data-lucide="clock"></i></div>
+                                <div>
+                                    <strong class="block text-dark">Horarios Flexibles</strong>
+                                    <span class="text-sm text-muted">Lun - Vie: 10am a 8pm<br>Sáb: 10am a 2pm</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="booking-form-wrapper glass-panel shadow-2xl reveal delay-100">
+                        <form id="bookingForm" novalidate class="premium-form">
+                            <div class="form-group">
+                                <label for="patientName">Nombre Completo <span class="required" aria-hidden="true">*</span></label>
+                                <input type="text" id="patientName" name="patientName" class="form-control" placeholder="Ej. Ana García" required autocomplete="name">
+                                <span class="error-msg" id="error-patientName"><i data-lucide="alert-circle" class="icon-xs"></i> Ingresa tu nombre.</span>
+                            </div>
+                            
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="patientEmail">Correo Electrónico <span class="required" aria-hidden="true">*</span></label>
+                                    <input type="email" id="patientEmail" name="patientEmail" class="form-control" placeholder="tucorreo@email.com" required autocomplete="email">
+                                    <span class="error-msg" id="error-patientEmail"><i data-lucide="alert-circle" class="icon-xs"></i> Correo inválido.</span>
+                                </div>
+                                <div class="form-group">
+                                    <label for="patientPhone">Teléfono Móvil <span class="required" aria-hidden="true">*</span></label>
+                                    <input type="tel" id="patientPhone" name="patientPhone" class="form-control" placeholder="449 000 0000" required autocomplete="tel">
+                                    <span class="error-msg" id="error-patientPhone"><i data-lucide="alert-circle" class="icon-xs"></i> Número inválido.</span>
+                                </div>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="treatmentType">Especialidad Requerida <span class="required" aria-hidden="true">*</span></label>
+                                <div class="select-wrapper">
+                                    <select id="treatmentType" name="treatmentType" class="form-control" required>
+                                        <option value="" disabled selected>Selecciona el motivo de tu visita</option>
+                                        <option value="valoracion">Valoración Integral / Limpieza</option>
+                                        <option value="ortodoncia">Ortodoncia / Brackets</option>
+                                        <option value="estetica">Estética / Diseño de Sonrisa</option>
+                                        <option value="implantes">Implantes / Prótesis</option>
+                                        <option value="urgencia">Urgencia Dental</option>
+                                    </select>
+                                    <i data-lucide="chevron-down" class="select-arrow"></i>
+                                </div>
+                                <span class="error-msg" id="error-treatmentType"><i data-lucide="alert-circle" class="icon-xs"></i> Selecciona una opción.</span>
+                            </div>
+                            
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="appointmentDate">Fecha Preferida <span class="required" aria-hidden="true">*</span></label>
+                                    <input type="date" id="appointmentDate" name="appointmentDate" class="form-control" required>
+                                    <span class="error-msg" id="error-appointmentDate"><i data-lucide="alert-circle" class="icon-xs"></i> Selecciona una fecha.</span>
+                                </div>
+                                <div class="form-group">
+                                    <label for="appointmentTime">Horario Preferido <span class="required" aria-hidden="true">*</span></label>
+                                    <div class="select-wrapper">
+                                        <select id="appointmentTime" name="appointmentTime" class="form-control" required>
+                                            <option value="" disabled selected>Elige un horario</option>
+                                            <option value="09:00">09:00 AM - Mañana</option>
+                                            <option value="12:00">12:00 PM - Mediodía</option>
+                                            <option value="16:00">04:00 PM - Tarde</option>
+                                            <option value="18:00">06:00 PM - Noche</option>
+                                        </select>
+                                        <i data-lucide="chevron-down" class="select-arrow"></i>
+                                    </div>
+                                    <span class="error-msg" id="error-appointmentTime"><i data-lucide="alert-circle" class="icon-xs"></i> Selecciona una hora.</span>
+                                </div>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="additionalNotes">Comentarios adicionales <span class="text-sm font-normal text-muted">(Opcional)</span></label>
+                                <textarea id="additionalNotes" name="additionalNotes" class="form-control" rows="2" placeholder="Describe brevemente tus síntomas o dudas..."></textarea>
+                            </div>
+                            
+                            <div class="submit-wrapper mt-medium">
+                                <button type="submit" class="btn btn-primary btn-block btn-xl submit-btn" id="submitBtn">
+                                    Confirmar y Pagar Valoración
+                                </button>
+                                <div class="stripe-badge text-center mt-4 flex items-center justify-center gap-2 text-sm text-muted">
+                                    <i data-lucide="lock" class="icon-xs text-green-600"></i>
+                                    Procesado de forma segura por <strong>Stripe</strong>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer-premium">
+        <div class="container text-center">
+            <div class="logo-mark mx-auto mb-4"><i data-lucide="sparkles"></i></div>
+            <h3 class="text-xl font-bold mb-2">Lumina Dental</h3>
+            <p class="text-muted mb-6 max-w-md mx-auto">Excelencia odontológica a tu alcance. Transformando sonrisas con ética y profesionalismo.</p>
+            <div class="footer-bottom">
+                <p class="text-sm text-muted">© <span id="currentYear"></span> Lumina Dental. Todos los derechos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <a href="https://wa.me/525512345678" class="fab-whatsapp" aria-label="Contáctanos por WhatsApp" target="_blank" rel="noopener">
+        <i data-lucide="message-circle"></i>
+    </a>
+
+    <script src="script.js"></script>
+</body>
+</html>
+
