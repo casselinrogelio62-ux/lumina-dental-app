@@ -3,255 +3,333 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Lumina Dental - Odontología estética y preventiva premium. Reserva tu valoración clínica en línea de forma rápida y segura.">
-    
+    <title>Lumina Dental Studio | Odontología Premium</title>
+    <meta name="description" content="Clínica dental de vanguardia. Especialistas en diseño de sonrisa, implantes y estética dental. Reserva tu cita online.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-    
-    <script src="https://unpkg.com/lucide@latest" defer></script>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
     <link rel="stylesheet" href="styles.css">
-    
-    <title>Lumina Dental | Especialistas en Odontología Premium</title>
 </head>
-<body class="antialiased">
-
-    <div id="loader" aria-hidden="true">
-        <div class="spinner-premium"></div>
-    </div>
-
+<body>
     <div id="toast-notification" role="alert" aria-live="assertive">
-        <i data-lucide="check-circle" aria-hidden="true" class="toast-icon"></i>
+        <i class="ph-fill ph-check-circle toast-icon"></i>
         <span id="toast-message">Operación exitosa</span>
     </div>
 
-    <header id="header-nav">
+    <nav class="navbar" id="navbar">
         <div class="container nav-content">
-            <a href="#" class="logo" data-target="inicio" aria-label="Ir a inicio">
-                <div class="logo-mark"><i data-lucide="sparkles" aria-hidden="true"></i></div>
-                <span>Lumina<span class="font-light">Dental</span></span>
+            <a href="#" class="logo">
+                <i class="ph ph-tooth"></i>
+                <span>Lumina<span class="fw-300">Studio</span></span>
             </a>
-            
-            <nav aria-label="Navegación principal">
-                <ul class="nav-links">
-                    <li><button class="nav-btn active" data-target="inicio">Inicio</button></li>
-                    <li><button class="nav-btn" data-target="servicios">Especialidades</button></li>
-                    <li><button class="nav-btn" data-target="nosotros">La Clínica</button></li>
-                </ul>
-            </nav>
-
+            <div class="nav-links" id="nav-links">
+                <a href="#servicios">Servicios</a>
+                <a href="#testimonios">Pacientes</a>
+                <a href="#nosotros">La Clínica</a>
+                <a href="#faq">FAQ</a>
+            </div>
             <div class="nav-actions">
-                <button class="btn btn-primary shadow-hover" data-target="reservar">Agenda tu cita</button>
-                <button class="mobile-menu-btn" aria-label="Abrir menú" aria-expanded="false" aria-controls="nav-links">
-                    <i data-lucide="menu" aria-hidden="true"></i>
+                <a href="#reserva" class="btn btn-primary">Reservar Cita</a>
+                <button class="mobile-menu-btn" id="mobile-menu-btn" aria-label="Abrir menú">
+                    <i class="ph ph-list"></i>
                 </button>
+            </div>
+        </div>
+    </nav>
+
+    <header class="hero" id="inicio">
+        <div class="hero-bg"></div>
+        <div class="container hero-content">
+            <div class="hero-text reveal">
+                <span class="badge">Odontología de Vanguardia</span>
+                <h1>El arte de una <span class="text-gradient">sonrisa perfecta</span></h1>
+                <p>Combina tecnología de última generación con la experiencia de especialistas dedicados a tu bienestar y estética dental.</p>
+                <div class="hero-cta">
+                    <a href="#reserva" class="btn btn-primary btn-lg">Reservar Cita <i class="ph ph-arrow-right"></i></a>
+                    <a href="#servicios" class="btn btn-secondary btn-lg">Ver Tratamientos</a>
+                </div>
+                <div class="trust-indicators">
+                    <div class="trust-item">
+                        <i class="ph-fill ph-star"></i>
+                        <div>
+                            <strong>4.9/5</strong>
+                            <span>+2,000 Pacientes felices</span>
+                        </div>
+                    </div>
+                    <div class="trust-item">
+                        <i class="ph-fill ph-shield-check"></i>
+                        <div>
+                            <strong>10+ Años</strong>
+                            <span>Experiencia clínica</span>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </header>
 
-    <main id="main-content">
-        
-        <section id="inicio" class="page-section active" aria-labelledby="hero-heading">
-            <div class="hero-wrapper">
-                <div class="container">
-                    <div class="hero-grid">
-                        <div class="hero-content reveal">
-                            <div class="trust-badge">
-                                <i data-lucide="shield-check" class="icon-sm"></i> Odontología Especializada
-                            </div>
-                            <h1 id="hero-heading" class="hero-title">
-                                Diseñamos la sonrisa que <span class="text-gradient">siempre has deseado</span>
-                            </h1>
-                            <p class="hero-subtitle">
-                                Tecnología digital, tratamientos sin dolor y especialistas altamente capacitados. Recupera tu salud bucal con la mejor experiencia clínica.
-                            </p>
-                            
-                            <div class="cta-group">
-                                <button class="btn btn-primary btn-lg" data-target="reservar">
-                                    Reservar Valoración <i data-lucide="arrow-right" class="icon-sm"></i>
-                                </button>
-                                <a href="https://wa.me/525512345678" target="_blank" class="btn btn-whatsapp btn-lg" rel="noopener">
-                                    <i data-lucide="message-circle" class="icon-sm"></i> Urgencias
-                                </a>
-                            </div>
+    <section class="services section-padding" id="servicios">
+        <div class="container">
+            <div class="section-header reveal">
+                <h2>Especialidades Clínicas</h2>
+                <p>Tratamientos diseñados a medida con tecnología mínimamente invasiva.</p>
+            </div>
+            <div class="services-grid">
+                <div class="service-card reveal">
+                    <div class="icon-box"><i class="ph-light ph-sparkle"></i></div>
+                    <h3>Diseño de Sonrisa</h3>
+                    <p>Carillas de porcelana ultra delgadas para una estética impecable y natural.</p>
+                    <a href="#reserva" class="card-link">Agendar <i class="ph ph-caret-right"></i></a>
+                </div>
+                <div class="service-card reveal" style="transition-delay: 0.1s;">
+                    <div class="icon-box"><i class="ph-light ph-tooth"></i></div>
+                    <h3>Implantes Dentales</h3>
+                    <p>Recupera la funcionalidad y estética con implantes de titanio de grado médico.</p>
+                    <a href="#reserva" class="card-link">Agendar <i class="ph ph-caret-right"></i></a>
+                </div>
+                <div class="service-card reveal" style="transition-delay: 0.2s;">
+                    <div class="icon-box"><i class="ph-light ph-smiley"></i></div>
+                    <h3>Ortodoncia Invisible</h3>
+                    <p>Alineación perfecta sin brackets tradicionales usando alineadores transparentes.</p>
+                    <a href="#reserva" class="card-link">Agendar <i class="ph ph-caret-right"></i></a>
+                </div>
+                <div class="service-card reveal" style="transition-delay: 0.3s;">
+                    <div class="icon-box"><i class="ph-light ph-drop"></i></div>
+                    <h3>Blanqueamiento Láser</h3>
+                    <p>Resultados visibles desde la primera sesión protegiendo el esmalte dental.</p>
+                    <a href="#reserva" class="card-link">Agendar <i class="ph ph-caret-right"></i></a>
+                </div>
+            </div>
+        </div>
+    </section>
 
-                            <div class="payment-trust mt-medium">
-                                <p class="text-xs text-muted font-medium uppercase tracking-wide">Pagos Seguros y Flexibles</p>
-                                <div class="payment-icons">
-                                    <i data-lucide="credit-card" aria-label="Tarjetas"></i>
-                                    <i data-lucide="smartphone" aria-label="Pagos Digitales"></i>
-                                    <span class="text-xs text-muted ml-2">+ Meses sin intereses (MSI)</span>
+    <section class="booking section-padding" id="reserva">
+        <div class="container">
+            <div class="booking-wrapper reveal">
+                <div class="booking-info">
+                    <h2>Reserva tu consulta</h2>
+                    <p>Da el primer paso hacia tu nueva sonrisa. El proceso toma menos de un minuto.</p>
+                    <ul class="booking-benefits">
+                        <li><i class="ph-fill ph-check-circle"></i> Confirmación inmediata</li>
+                        <li><i class="ph-fill ph-lock-key"></i> Pago seguro vía Stripe</li>
+                        <li><i class="ph-fill ph-check-circle"></i> Cancelación flexible</li>
+                    </ul>
+                </div>
+                <div class="booking-form-container glass-panel">
+                    <div class="form-progress">
+                        <div class="step active" id="step-indicator-1">1. Datos</div>
+                        <div class="step" id="step-indicator-2">2. Fecha y Hora</div>
+                        <div class="step" id="step-indicator-3">3. Confirmación</div>
+                    </div>
+
+                    <form id="appointment-form" novalidate>
+                        <div class="form-step active" id="step-1">
+                            <div class="input-group">
+                                <label for="fullName">Nombre completo</label>
+                                <input type="text" id="fullName" name="patientName" placeholder="Ej. Carlos Martínez" required>
+                                <span class="error-msg">Por favor, ingresa tu nombre.</span>
+                            </div>
+                            <div class="input-row">
+                                <div class="input-group">
+                                    <label for="phone">Teléfono (WhatsApp)</label>
+                                    <input type="tel" id="phone" name="patientPhone" placeholder="10 dígitos" required pattern="[0-9]{8,15}">
+                                    <span class="error-msg">Ingresa un teléfono válido.</span>
+                                </div>
+                                <div class="input-group">
+                                    <label for="email">Correo electrónico</label>
+                                    <input type="email" id="email" name="patientEmail" placeholder="correo@ejemplo.com" required>
+                                    <span class="error-msg">Ingresa un correo válido.</span>
                                 </div>
                             </div>
+                            <div class="input-group">
+                                <label for="treatment">Tratamiento de interés</label>
+                                <select id="treatment" name="treatmentType" required>
+                                    <option value="" disabled selected>Selecciona una opción</option>
+                                    <option value="limpieza">Limpieza de rutina</option>
+                                    <option value="valoracion">Valoración / Primera vez</option>
+                                    <option value="diseno">Diseño de Sonrisa</option>
+                                    <option value="ortodoncia">Ortodoncia</option>
+                                    <option value="urgencia">Urgencia Dental</option>
+                                </select>
+                            </div>
+                            <button type="button" class="btn btn-primary btn-full" id="btn-next-1">Continuar <i class="ph ph-arrow-right"></i></button>
                         </div>
 
-                        <div class="hero-visual reveal delay-100">
-                            <div class="image-composition">
-                                <img src="https://images.unsplash.com/photo-1606811841689-23dfddce3e95?auto=format&fit=crop&q=80&w=1000" alt="Instalaciones modernas de Lumina Dental" class="main-img" fetchpriority="high">
-                                <div class="floating-stat glass-panel shadow-premium">
-                                    <div class="stat-icon bg-blue-100 text-blue-600"><i data-lucide="users"></i></div>
-                                    <div>
-                                        <div class="stat-value">+2,500</div>
-                                        <div class="stat-label">Pacientes Felices</div>
-                                    </div>
-                                </div>
+                        <div class="form-step" id="step-2">
+                            <div class="input-group">
+                                <label for="appointmentDate">Selecciona un día</label>
+                                <input type="date" id="appointmentDate" name="appointmentDate" required>
                             </div>
+                            <div class="input-group time-selection">
+                                <label>Horarios disponibles (9:00 AM - 12:00 AM)</label>
+                                <div class="time-legend">
+                                    <span class="legend-item"><span class="dot available-dot"></span> Disponible</span>
+                                    <span class="legend-item"><span class="dot occupied-dot"></span> Ocupado</span>
+                                    <span class="legend-item"><span class="dot selected-dot"></span> Seleccionado</span>
+                                </div>
+                                <div class="time-slots-grid" id="time-slots-container">
+                                    <p class="placeholder-text">Selecciona una fecha primero.</p>
+                                </div>
+                                <input type="hidden" id="selectedTime" name="appointmentTime" required>
+                                <span class="error-msg" id="time-error">Debes seleccionar un horario.</span>
+                            </div>
+                            <div class="form-actions">
+                                <button type="button" class="btn btn-outline" id="btn-prev-1">Volver</button>
+                                <button type="submit" class="btn btn-primary" id="btn-submit">Confirmar y Pagar</button>
+                            </div>
+                            <p class="text-center" style="margin-top: 15px; font-size: 0.8rem; color: #64748b;"><i class="ph-fill ph-lock"></i> Pagos encriptados por Stripe</p>
+                        </div>
+
+                        <div class="form-step success-step" id="step-3">
+                            <i class="ph-fill ph-check-circle text-success" style="font-size: 4rem;"></i>
+                            <h3>¡Pago y cita confirmados!</h3>
+                            <p>Tu reservación en Lumina Dental Studio ha sido registrada exitosamente. Hemos enviado los detalles a tu correo.</p>
+                            <button type="button" class="btn btn-secondary mt-4" onclick="location.href='/'">Volver al inicio</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="about section-padding" id="nosotros">
+        <div class="container about-grid">
+            <div class="about-image reveal">
+                <div class="img-placeholder"></div>
+                <div class="floating-stat glass-panel">
+                    <i class="ph-fill ph-certificate"></i>
+                    <div>
+                        <strong>Certificación</strong>
+                        <span>Internacional 2026</span>
+                    </div>
+                </div>
+            </div>
+            <div class="about-content reveal" style="transition-delay: 0.2s;">
+                <h2>Tecnología y confort en un solo lugar.</h2>
+                <p>Nuestra clínica en el corazón de la zona norte está diseñada para eliminar el estrés de las visitas dentales. Utilizamos escáneres 3D intraorales, anestesia computarizada sin dolor y materiales biocompatibles de la más alta calidad.</p>
+                <div class="features-list">
+                    <div class="feature"><i class="ph-fill ph-check"></i> Escáner intraoral 3D (Sin pastas)</div>
+                    <div class="feature"><i class="ph-fill ph-check"></i> Salas de espera VIP con aromaterapia</div>
+                    <div class="feature"><i class="ph-fill ph-check"></i> Esterilización de grado hospitalario</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="faq section-padding bg-light" id="faq">
+        <div class="container">
+            <div class="section-header reveal">
+                <h2>Preguntas Frecuentes</h2>
+            </div>
+            <div class="accordion reveal">
+                <div class="accordion-item">
+                    <button class="accordion-header">
+                        ¿Cómo funciona el proceso de primera valoración? <i class="ph ph-caret-down"></i>
+                    </button>
+                    <div class="accordion-content">
+                        <p>En tu primera visita realizamos un escaneo 3D completo de tu boca, radiografías digitales y una evaluación clínica detallada. Te explicamos las opciones de tratamiento en pantallas de alta definición para que entiendas perfectamente tu plan.</p>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <button class="accordion-header">
+                        ¿Atienden urgencias dentales? <i class="ph ph-caret-down"></i>
+                    </button>
+                    <div class="accordion-content">
+                        <p>Sí, ofrecemos atención prioritaria para urgencias como dolor intenso, fracturas dentales o infecciones. Selecciona la opción "Urgencia" en nuestro formulario de reserva o contáctanos por WhatsApp.</p>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <button class="accordion-header">
+                        ¿Cuáles son los métodos de pago aceptados? <i class="ph ph-caret-down"></i>
+                    </button>
+                    <div class="accordion-content">
+                        <p>Aceptamos todas las tarjetas de crédito y débito, transferencias bancarias, y ofrecemos planes de financiamiento a meses sin intereses con tarjetas participantes.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="contact section-padding" id="contacto">
+        <div class="container contact-grid">
+            <div class="contact-info reveal">
+                <h2>Visítanos</h2>
+                <p>Ubicados en una de las zonas más accesibles y exclusivas.</p>
+                <div class="info-items">
+                    <div class="info-item">
+                        <i class="ph-fill ph-map-pin"></i>
+                        <div>
+                            <strong>Dirección</strong>
+                            <span>Av. Luis Donaldo Colosio, Col. Bosques del Prado, Aguascalientes, Ags.</span>
+                        </div>
+                    </div>
+                    <div class="info-item">
+                        <i class="ph-fill ph-clock"></i>
+                        <div>
+                            <strong>Horarios</strong>
+                            <span>Lunes a Sábado: 9:00 AM - 12:00 AM</span>
+                        </div>
+                    </div>
+                    <div class="info-item">
+                        <i class="ph-fill ph-phone"></i>
+                        <div>
+                            <strong>Contacto</strong>
+                            <span>+52 449 XXX XXXX</span>
                         </div>
                     </div>
                 </div>
             </div>
-        </section>
-
-        <section id="servicios" class="page-section section-padding bg-slate-50" aria-labelledby="services-heading">
-            <div class="container">
-                <header class="section-header reveal text-center">
-                    <h2 id="services-heading" class="section-title">Nuestras Especialidades</h2>
-                    <p class="section-desc">Atención integral para toda la familia con los más altos estándares médicos.</p>
-                </header>
-
-                <div class="services-grid">
-                    <article class="service-card reveal hover-lift">
-                        <div class="icon-box"><i data-lucide="smile"></i></div>
-                        <h3>Ortodoncia Estética</h3>
-                        <p class="text-muted">Alineación perfecta para niños, adolescentes y adultos con brackets tradicionales o alineadores invisibles.</p>
-                    </article>
-
-                    <article class="service-card reveal delay-100 hover-lift">
-                        <div class="icon-box"><i data-lucide="shield"></i></div>
-                        <h3>Prótesis e Implantes</h3>
-                        <p class="text-muted">Recupera la función masticatoria y estética con implantes de titanio y coronas de porcelana pura.</p>
-                    </article>
-
-                    <article class="service-card reveal delay-200 hover-lift">
-                        <div class="icon-box"><i data-lucide="activity"></i></div>
-                        <h3>Endodoncia y Prevención</h3>
-                        <p class="text-muted">Salvamos tus piezas dentales mediante tratamientos de conducto especializados y limpiezas profundas.</p>
-                    </article>
+            <div class="map-container reveal glass-panel">
+                <div class="map-placeholder">
+                    <i class="ph-light ph-map-trifold" style="font-size: 3rem; color: var(--primary);"></i>
+                    <p>Mapa Interactivo</p>
                 </div>
             </div>
-        </section>
+        </div>
+    </section>
 
-        <section id="reservar" class="page-section section-padding booking-area" aria-labelledby="booking-heading">
-            <div class="container">
-                <div class="booking-grid">
-                    
-                    <div class="booking-context reveal">
-                        <h2 id="booking-heading" class="section-title">Agenda tu cita hoy mismo</h2>
-                        <p class="text-muted text-lg mb-extra">Asegura tu espacio en nuestra agenda. Tu valoración inicial incluye diagnóstico digital completo.</p>
-                        
-                        <div class="info-blocks">
-                            <div class="info-item">
-                                <div class="info-icon"><i data-lucide="map-pin"></i></div>
-                                <div>
-                                    <strong class="block text-dark">Ubicación Céntrica</strong>
-                                    <span class="text-sm text-muted">Av. Principal 123, Consultorio 402. Estacionamiento gratuito.</span>
-                                </div>
-                            </div>
-                            <div class="info-item mt-medium">
-                                <div class="info-icon"><i data-lucide="clock"></i></div>
-                                <div>
-                                    <strong class="block text-dark">Horarios Flexibles</strong>
-                                    <span class="text-sm text-muted">Lun - Vie: 10am a 8pm<br>Sáb: 10am a 2pm</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="booking-form-wrapper glass-panel shadow-2xl reveal delay-100">
-                        <form id="bookingForm" novalidate class="premium-form">
-                            <div class="form-group">
-                                <label for="patientName">Nombre Completo <span class="required" aria-hidden="true">*</span></label>
-                                <input type="text" id="patientName" name="patientName" class="form-control" placeholder="Ej. Ana García" required autocomplete="name">
-                                <span class="error-msg" id="error-patientName"><i data-lucide="alert-circle" class="icon-xs"></i> Ingresa tu nombre.</span>
-                            </div>
-                            
-                            <div class="form-row">
-                                <div class="form-group">
-                                    <label for="patientEmail">Correo Electrónico <span class="required" aria-hidden="true">*</span></label>
-                                    <input type="email" id="patientEmail" name="patientEmail" class="form-control" placeholder="tucorreo@email.com" required autocomplete="email">
-                                    <span class="error-msg" id="error-patientEmail"><i data-lucide="alert-circle" class="icon-xs"></i> Correo inválido.</span>
-                                </div>
-                                <div class="form-group">
-                                    <label for="patientPhone">Teléfono Móvil <span class="required" aria-hidden="true">*</span></label>
-                                    <input type="tel" id="patientPhone" name="patientPhone" class="form-control" placeholder="449 000 0000" required autocomplete="tel">
-                                    <span class="error-msg" id="error-patientPhone"><i data-lucide="alert-circle" class="icon-xs"></i> Número inválido.</span>
-                                </div>
-                            </div>
-                            
-                            <div class="form-group">
-                                <label for="treatmentType">Especialidad Requerida <span class="required" aria-hidden="true">*</span></label>
-                                <div class="select-wrapper">
-                                    <select id="treatmentType" name="treatmentType" class="form-control" required>
-                                        <option value="" disabled selected>Selecciona el motivo de tu visita</option>
-                                        <option value="valoracion">Valoración Integral / Limpieza</option>
-                                        <option value="ortodoncia">Ortodoncia / Brackets</option>
-                                        <option value="estetica">Estética / Diseño de Sonrisa</option>
-                                        <option value="implantes">Implantes / Prótesis</option>
-                                        <option value="urgencia">Urgencia Dental</option>
-                                    </select>
-                                    <i data-lucide="chevron-down" class="select-arrow"></i>
-                                </div>
-                                <span class="error-msg" id="error-treatmentType"><i data-lucide="alert-circle" class="icon-xs"></i> Selecciona una opción.</span>
-                            </div>
-                            
-                            <div class="form-row">
-                                <div class="form-group">
-                                    <label for="appointmentDate">Fecha Preferida <span class="required" aria-hidden="true">*</span></label>
-                                    <input type="date" id="appointmentDate" name="appointmentDate" class="form-control" required>
-                                    <span class="error-msg" id="error-appointmentDate"><i data-lucide="alert-circle" class="icon-xs"></i> Selecciona una fecha.</span>
-                                </div>
-                                <div class="form-group">
-                                    <label for="appointmentTime">Horario Preferido <span class="required" aria-hidden="true">*</span></label>
-                                    <div class="select-wrapper">
-                                        <select id="appointmentTime" name="appointmentTime" class="form-control" required>
-                                            <option value="" disabled selected>Elige un horario</option>
-                                            <option value="09:00">09:00 AM - Mañana</option>
-                                            <option value="12:00">12:00 PM - Mediodía</option>
-                                            <option value="16:00">04:00 PM - Tarde</option>
-                                            <option value="18:00">06:00 PM - Noche</option>
-                                        </select>
-                                        <i data-lucide="chevron-down" class="select-arrow"></i>
-                                    </div>
-                                    <span class="error-msg" id="error-appointmentTime"><i data-lucide="alert-circle" class="icon-xs"></i> Selecciona una hora.</span>
-                                </div>
-                            </div>
-                            
-                            <div class="form-group">
-                                <label for="additionalNotes">Comentarios adicionales <span class="text-sm font-normal text-muted">(Opcional)</span></label>
-                                <textarea id="additionalNotes" name="additionalNotes" class="form-control" rows="2" placeholder="Describe brevemente tus síntomas o dudas..."></textarea>
-                            </div>
-                            
-                            <div class="submit-wrapper mt-medium">
-                                <button type="submit" class="btn btn-primary btn-block btn-xl submit-btn" id="submitBtn">
-                                    Confirmar y Pagar Valoración
-                                </button>
-                                <div class="stripe-badge text-center mt-4 flex items-center justify-center gap-2 text-sm text-muted">
-                                    <i data-lucide="lock" class="icon-xs text-green-600"></i>
-                                    Procesado de forma segura por <strong>Stripe</strong>
-                                </div>
-                            </div>
-                        </form>
-                    </div>
-
+    <footer class="footer">
+        <div class="container footer-grid">
+            <div class="footer-brand">
+                <a href="#" class="logo text-white">
+                    <i class="ph ph-tooth"></i>
+                    <span>Lumina<span class="fw-300">Studio</span></span>
+                </a>
+                <p>Revolucionando la estética dental con tecnología y calidez humana.</p>
+            </div>
+            <div class="footer-links">
+                <h4>Enlaces</h4>
+                <a href="#servicios">Tratamientos</a>
+                <a href="#nosotros">Nosotros</a>
+                <a href="#reserva">Agendar Cita</a>
+            </div>
+            <div class="footer-legal">
+                <h4>Legal</h4>
+                <a href="#">Aviso de Privacidad</a>
+                <a href="#">Términos y Condiciones</a>
+            </div>
+            <div class="footer-social">
+                <h4>Síguenos</h4>
+                <div class="social-icons">
+                    <a href="#"><i class="ph-fill ph-instagram-logo"></i></a>
+                    <a href="#"><i class="ph-fill ph-facebook-logo"></i></a>
+                    <a href="#"><i class="ph-fill ph-tiktok-logo"></i></a>
                 </div>
             </div>
-        </section>
-    </main>
-
-    <footer class="footer-premium">
-        <div class="container text-center">
-            <div class="logo-mark mx-auto mb-4"><i data-lucide="sparkles"></i></div>
-            <h3 class="text-xl font-bold mb-2">Lumina Dental</h3>
-            <p class="text-muted mb-6 max-w-md mx-auto">Excelencia odontológica a tu alcance. Transformando sonrisas con ética y profesionalismo.</p>
-            <div class="footer-bottom">
-                <p class="text-sm text-muted">© <span id="currentYear"></span> Lumina Dental. Todos los derechos reservados.</p>
-            </div>
+        </div>
+        <div class="footer-bottom text-center">
+            <p>&copy; 2026 Lumina Dental Studio. Todos los derechos reservados.</p>
         </div>
     </footer>
 
-    <a href="https://wa.me/525512345678" class="fab-whatsapp" aria-label="Contáctanos por WhatsApp" target="_blank" rel="noopener">
-        <i data-lucide="message-circle"></i>
+    <a href="#" class="fab-whatsapp" aria-label="Contactar por WhatsApp">
+        <i class="ph-fill ph-whatsapp-logo"></i>
     </a>
+
+    <div class="mobile-sticky-cta">
+        <a href="#reserva" class="btn btn-primary btn-full">Agendar Cita Ahora</a>
+    </div>
 
     <script src="script.js"></script>
 </body>
