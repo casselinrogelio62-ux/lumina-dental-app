@@ -1,8 +1,3 @@
-/**
- * Lumina Dental Studio - Arquitectura Frontend v3.0
- * Integra la lógica estricta de validación de agenda conectada a Supabase
- */
-
 document.addEventListener('DOMContentLoaded', () => {
     initScrollReveal();
     initSmoothNavigation();
@@ -97,22 +92,17 @@ function initBookingSystem() {
             loadingSlots.style.display = 'none';
         }
     });
-
-    // Función principal de lógica de negocio (Reglas del consultorio)
     function generateStrictTimeSlots(dateString, ocupadosDB) {
         const [year, month, day] = dateString.split('-');
         const selectedDate = new Date(year, month - 1, day);
-        const dayOfWeek = selectedDate.getDay(); // 0 = Domingo, 1 = Lunes, 6 = Sábado
+        const dayOfWeek = selectedDate.getDay();
 
-        // Regla 1: Domingos cerrado
         if (dayOfWeek === 0) {
             timeContainer.innerHTML = '<p class="placeholder-text" style="grid-column: 1/-1;">El consultorio permanece cerrado los domingos.</p>';
             return;
         }
-
-        // Regla 2: Definir apertura y cierre según el día
-        const openHour = 9; // 09:00 AM
-        const closeHour = (dayOfWeek === 6) ? 15 : 21; // 3:00 PM los Sábados, 9:00 PM Lun-Vie
+        const openHour = 9; 
+        const closeHour = (dayOfWeek === 6) ? 15 : 21; 
 
         const now = new Date();
         const isToday = selectedDate.toDateString() === now.toDateString();
@@ -121,21 +111,18 @@ function initBookingSystem() {
 
         let slotsGenerados = 0;
 
-        // Generar intervalos de 1 hora (o 30 mins) para la agenda
         for (let hour = openHour; hour < closeHour; hour++) {
             ['00', '30'].forEach(min => {
                 let displayHour = hour > 12 ? hour - 12 : hour;
-                if (displayHour === 0) displayHour = 12; // Formato 12 hrs
+                if (displayHour === 0) displayHour = 12; 
                 let amPm = hour >= 12 ? 'PM' : 'AM';
                 const timeString = `${displayHour < 10 ? '0'+displayHour : displayHour}:${min} ${amPm}`;
                 
                 const slotDiv = document.createElement('div');
                 slotDiv.textContent = timeString;
 
-                // VALIDACIONES DE BLOQUEO
                 let isPast = isToday && (hour < currentHour || (hour === currentHour && parseInt(min) <= currentMinute));
                 
-                // Formateamos para igualar como guarda tu base de datos (Asumiendo formato "09:00")
                 const timeStringForDB = `${hour < 10 ? '0'+hour : hour}:${min}`;
                 let isBooked = ocupadosDB.includes(timeStringForDB) || ocupadosDB.includes(timeString);
 

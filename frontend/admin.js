@@ -4,22 +4,17 @@ async function obtenerCitas() {
     const tabla = document.getElementById('tabla-citas');
 
     try {
-        // Pedimos los datos a nuestro backend
         const respuesta = await fetch('/api/reservas');
         const datos = await respuesta.json();
 
         if (datos.reservas && datos.reservas.length > 0) {
-            // Limpiamos el mensaje de "Cargando..."
             tabla.innerHTML = '';
 
-            // Invertimos el arreglo para ver las más nuevas primero
             const citasRecientes = datos.reservas.reverse();
 
-            // Dibujamos cada fila en la tabla
             citasRecientes.forEach(cita => {
                 const fila = document.createElement('tr');
                 
-                // Formateamos la fecha para que se vea bonita
                 const fechaFormateada = new Date(cita.fecha).toLocaleDateString('es-MX', {
                     weekday: 'long', year: 'numeric', month: 'long', day: 'numeric'
                 });
@@ -43,7 +38,6 @@ async function obtenerCitas() {
                 tabla.appendChild(fila);
             });
             
-            // Re-renderizamos los iconos de Lucide para las nuevas filas
             lucide.createIcons();
             
         } else {

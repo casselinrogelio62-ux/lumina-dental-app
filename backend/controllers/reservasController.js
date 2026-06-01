@@ -1,11 +1,8 @@
-// 1. Importamos la herramienta de Supabase
 const { createClient } = require('@supabase/supabase-js');
 
-// 2. Le pasamos nuestras llaves secretas del archivo .env
 const supabase = createClient(process.env.SUPABASE_URL, process.env.SUPABASE_KEY);
 
 const obtenerReservas = async (req, res) => {
-    // Le pedimos a Supabase TODAS las filas de la tabla 'reservas'
     const { data, error } = await supabase.from('reservas').select('*');
     
     if (error) {
@@ -21,8 +18,6 @@ const crearReserva = async (req, res) => {
     if (!patientName || !patientEmail || !patientPhone || !treatmentType || !appointmentDate || !appointmentTime) {
         return res.status(400).json({ error: "Faltan datos obligatorios." });
     }
-
-    // 3. Enviamos el "paquete" directo a nuestra tabla de Supabase en la nube
     const { data, error } = await supabase
         .from('reservas')
         .insert([
@@ -50,8 +45,6 @@ const crearReserva = async (req, res) => {
         reservaGuardada: data 
     });
 };
-
-// ¡Esta es la parte que probablemente se borró!
 module.exports = {
     obtenerReservas,
     crearReserva
