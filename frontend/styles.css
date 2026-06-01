@@ -1,48 +1,78 @@
-/* Pega esto exactamente al FINAL de tu archivo styles.css existente (gemini-code-1779805773232.css) */
-
-/* =========================================
-   SISTEMA DE NOTIFICACIONES (TOAST)
-========================================= */
-#toast-notification {
-    position: fixed;
-    bottom: 30px;
-    left: 50%;
-    transform: translate(-50%, 150%);
-    background: var(--text-main);
-    color: white;
-    padding: 14px 24px;
-    border-radius: 30px;
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    box-shadow: var(--shadow-lg);
-    z-index: 9999;
-    transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-    font-weight: 500;
+:root {
+    --primary: #0a2540;
+    --primary-light: #476a94;
+    --accent: #2e81ff;
+    --text-main: #1a1f2b;
+    --text-muted: #64748b;
+    --bg-main: #ffffff;
+    --bg-light: #f8fafc;
+    --success: #10b981;
+    --error: #ef4444;
+    --radius-md: 12px;
+    --transition: all 0.3s ease;
 }
 
-#toast-notification.active {
-    transform: translate(-50%, 0);
-}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: 'Plus Jakarta Sans', sans-serif; color: var(--text-main); background: var(--bg-main); line-height: 1.6; }
+.container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+.section-padding { padding: 80px 0; }
+.text-success { color: var(--success); }
 
-#toast-notification.success {
-    background: var(--text-main);
-    border: 1px solid var(--success);
-}
+/* Componentes */
+.glass-panel { background: white; border: 1px solid #e2e8f0; border-radius: var(--radius-md); box-shadow: 0 10px 30px rgba(0,0,0,0.05); padding: 40px; }
+.text-gradient { background: linear-gradient(135deg, var(--primary), var(--accent)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
 
-#toast-notification.error {
-    background: var(--error);
-    border: 1px solid #7f1d1d;
-}
+/* Botones */
+.btn { display: inline-flex; align-items: center; justify-content: center; padding: 12px 24px; border-radius: 50px; font-weight: 600; cursor: pointer; text-decoration: none; border: none; transition: var(--transition); gap: 8px; }
+.btn-primary { background: var(--primary); color: white; }
+.btn-primary:hover { background: var(--accent); transform: translateY(-2px); }
+.btn-secondary { background: var(--bg-light); color: var(--primary); }
+.btn-full { width: 100%; }
+.btn-outline { background: transparent; border: 1px solid #cbd5e1; color: var(--text-main); }
 
-.toast-icon {
-    font-size: 1.3rem;
-}
+/* Navbar y Hero */
+.navbar { padding: 20px 0; border-bottom: 1px solid #f1f5f9; }
+.nav-content { display: flex; justify-content: space-between; align-items: center; }
+.logo { font-size: 1.5rem; font-weight: 700; color: var(--primary); text-decoration: none; display: flex; align-items: center; gap: 8px; }
+.hero { padding-top: 60px; min-height: 70vh; display: flex; align-items: center; }
+.hero h1 { font-size: 3.5rem; line-height: 1.1; margin-bottom: 20px; }
+.badge { background: var(--bg-light); color: var(--primary); padding: 6px 12px; border-radius: 20px; font-size: 0.85rem; font-weight: 600; margin-bottom: 20px; display: inline-block; }
 
-#toast-notification.success .toast-icon {
-    color: var(--success);
-}
+/* Formulario */
+.booking-wrapper { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: start; }
+.booking-info h2 { font-size: 2.5rem; margin-bottom: 20px; }
+.booking-benefits { list-style: none; margin-top: 20px; }
+.booking-benefits li { margin-bottom: 10px; display: flex; align-items: center; gap: 10px; color: var(--primary); }
+.booking-benefits i { color: var(--success); }
 
-#toast-notification.error .toast-icon {
-    color: white;
-}
+.form-progress { display: flex; justify-content: space-between; border-bottom: 2px solid var(--bg-light); padding-bottom: 15px; margin-bottom: 30px; }
+.step { font-weight: 600; color: var(--text-muted); }
+.step.active { color: var(--primary); }
+.form-step { display: none; }
+.form-step.active { display: block; animation: fadeIn 0.4s; }
+
+.input-group { margin-bottom: 20px; }
+.input-row { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+label { display: block; margin-bottom: 8px; font-weight: 600; font-size: 0.9rem; }
+input, select { width: 100%; padding: 12px; border: 1px solid #cbd5e1; border-radius: 8px; font-family: inherit; }
+.error-msg { display: none; color: var(--error); font-size: 0.8rem; margin-top: 5px; }
+
+/* Horarios */
+.time-slots-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(100px, 1fr)); gap: 10px; margin-top: 15px; }
+.time-slot { padding: 10px; text-align: center; border-radius: 8px; cursor: pointer; border: 1px solid #cbd5e1; background: var(--bg-light); }
+.time-slot:hover { border-color: var(--accent); }
+.time-slot.selected { background: var(--primary); color: white; }
+.time-slot.disabled { opacity: 0.5; cursor: not-allowed; }
+.form-actions { display: flex; gap: 15px; margin-top: 20px; }
+
+/* Footer y Utilidades */
+.footer { background: var(--primary); padding: 60px 0; color: #cbd5e1; }
+.footer-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; }
+.social-icons.vertical-list { display: flex; flex-direction: column; gap: 12px; }
+.social-icons.vertical-list a { color: white; text-decoration: none; display: flex; align-items: center; gap: 10px; font-size: 1rem; transition: var(--transition); }
+.social-icons.vertical-list a:hover { color: var(--accent); transform: translateX(5px); }
+
+#toast-notification { position: fixed; bottom: 30px; left: 50%; transform: translate(-50%, 150%); background: var(--primary); color: white; padding: 12px 24px; border-radius: 30px; display: flex; align-items: center; gap: 10px; transition: 0.3s; z-index: 1000; }
+#toast-notification.active { transform: translate(-50%, 0); }
+#toast-notification.error { background: var(--error); }
+@keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
