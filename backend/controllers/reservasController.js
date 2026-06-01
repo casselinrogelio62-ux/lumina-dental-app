@@ -11,7 +11,7 @@ exports.obtenerReservas = async (req, res) => {
     try {
         const { data, error } = await supabase
             .from('reservas')
-            .select('fecha, hora'); // Solo traemos lo que importa por seguridad
+            .select('fecha, hora'); 
 
         if (error) throw error;
 
@@ -58,6 +58,20 @@ exports.crearReserva = async (req, res) => {
         res.status(201).json({ mensaje: "Reserva guardada con éxito", data });
     } catch (error) {
         console.error("Error al crear reserva:", error);
+        res.status(500).json({ error: error.message });
+    }
+};
+exports.obtenerTodasLasReservas = async (req, res) => {
+    try {
+        const { data, error } = await supabase
+            .from('reservas')
+            .select('*')
+            .order('fecha', { ascending: false }); 
+
+        if (error) throw error;
+        res.status(200).json({ reservas: data });
+    } catch (error) {
+        console.error("Error al obtener reservas completas:", error);
         res.status(500).json({ error: error.message });
     }
 };

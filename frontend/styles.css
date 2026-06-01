@@ -1,8 +1,7 @@
 :root {
-    /* Paleta Premium Light */
-    --primary: #0ea5e9; /* Azul Médico Principal */
+    --primary: #0ea5e9; 
     --primary-dark: #0284c7;
-    --secondary: #06b6d4; /* Turquesa acento */
+    --secondary: #06b6d4; 
     
     --bg-page: #ffffff;
     --bg-light: #f8fafc;
