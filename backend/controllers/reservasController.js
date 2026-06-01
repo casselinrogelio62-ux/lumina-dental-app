@@ -45,7 +45,7 @@ exports.crearReserva = async (req, res) => {
                 {
                     nombre: patientName,
                     telefono: patientPhone,
-                    correo: patientEmail,
+                    email: patientEmail,
                     servicio: treatmentType,
                     fecha: appointmentDate,
                     hora: appointmentTime,

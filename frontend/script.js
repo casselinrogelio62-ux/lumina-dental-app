@@ -1,3 +1,8 @@
+/**
+ * Lumina Dental Studio - Arquitectura Frontend v3.0
+ * Integra la lógica estricta de validación, ocultamiento de horarios y errores reales.
+ */
+
 document.addEventListener('DOMContentLoaded', () => {
     initScrollReveal();
     initSmoothNavigation();
@@ -24,7 +29,7 @@ function initSmoothNavigation() {
     });
 }
 
-// 2. Animaciones de aparición (Si esto falla, la página se ve cortada)
+// 2. Animaciones de aparición
 function initScrollReveal() {
     const reveals = document.querySelectorAll('.reveal');
     const observer = new IntersectionObserver((entries) => {
@@ -177,7 +182,11 @@ function initBookingSystem() {
                 body: JSON.stringify(formData)
             });
 
-            if (!reservaRes.ok) throw new Error('El horario acaba de ser ocupado por alguien más.');
+            // NUEVA LÓGICA: Leer el error real del backend (Supabase)
+            if (!reservaRes.ok) {
+                const errorData = await reservaRes.json();
+                throw new Error(errorData.error || 'Error en la base de datos Supabase');
+            }
 
             const pagoRes = await fetch('/api/pagos/crear-sesion', { method: 'POST' });
             const pagoData = await pagoRes.json();
@@ -189,6 +198,7 @@ function initBookingSystem() {
             }
 
         } catch (error) {
+            // Aquí mostrará el error exacto en la alerta roja (ej. Could not find column...)
             showToast(error.message, 'error');
             btnSubmit.innerHTML = originalText;
             btnSubmit.disabled = false;
