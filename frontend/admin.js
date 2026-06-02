@@ -1,50 +1,45 @@
-document.addEventListener('DOMContentLoaded', obtenerCitas);
+document.addEventListener('DOMContentLoaded', cargarAgenda);
 
-async function obtenerCitas() {
-    const tabla = document.getElementById('tabla-citas');
+async function cargarAgenda() {
+    const tbody = document.getElementById('tabla-reservas');
 
     try {
-        const respuesta = await fetch('/api/reservas');
-        const datos = await respuesta.json();
+        const respuesta = await fetch('/api/reservas/admin');
+        const data = await respuesta.json();
 
-        if (datos.reservas && datos.reservas.length > 0) {
-            tabla.innerHTML = '';
-
-            const citasRecientes = datos.reservas.reverse();
-
-            citasRecientes.forEach(cita => {
-                const fila = document.createElement('tr');
-                
-                const fechaFormateada = new Date(cita.fecha).toLocaleDateString('es-MX', {
-                    weekday: 'long', year: 'numeric', month: 'long', day: 'numeric'
-                });
-
-                fila.innerHTML = `
-                    <td>
-                        <strong>${cita.nombre}</strong><br>
-                        <small style="color: #64748b;">ID: ${cita.id}</small>
-                    </td>
-                    <td>
-                        <div><i data-lucide="mail" style="width: 14px; height: 14px; vertical-align: middle;"></i> ${cita.email}</div>
-                        <div><i data-lucide="phone" style="width: 14px; height: 14px; vertical-align: middle;"></i> ${cita.telefono}</div>
-                    </td>
-                    <td><span style="text-transform: capitalize;">${cita.tratamiento}</span></td>
-                    <td>
-                        <div style="font-weight: 600;">${fechaFormateada}</div>
-                        <div style="color: #64748b;">${cita.hora} hrs</div>
-                    </td>
-                    <td><span class="badge">${cita.estado || 'Confirmada'}</span></td>
-                `;
-                tabla.appendChild(fila);
-            });
-            
-            lucide.createIcons();
-            
-        } else {
-            tabla.innerHTML = '<tr><td colspan="5" class="empty-state">No hay citas registradas en la base de datos.</td></tr>';
+        if (data.reservas.length === 0) {
+            tbody.innerHTML = '<tr><td colspan="6" style="text-align: center;">No hay citas agendadas aún.</td></tr>';
+            return;
         }
+
+        tbody.innerHTML = '';
+
+        data.reservas.forEach(reserva => {
+            const tr = document.createElement('tr');
+            
+            const [year, month, day] = reserva.fecha.split('-');
+            const fechaFormateada = `${day}/${month}/${year}`;
+            
+            // Cortamos los segundos de la hora para que se vea "19:30" en vez de "19:30:00"
+            const horaAmigable = reserva.hora ? reserva.hora.substring(0, 5) : 'N/A';
+
+            tr.innerHTML = `
+                <td style="font-weight: 600;">${fechaFormateada}</td>
+                <td style="color: var(--primary); font-weight: 600;">${horaAmigable}</td>
+                <td>${reserva.nombre}</td>
+                <td>
+                    ${reserva.telefono}<br>
+                    <span style="font-size: 0.85rem; color: var(--text-muted);">${reserva.email}</span>
+                </td>
+                <td style="text-transform: capitalize;">${reserva.tratamiento}</td>
+                <td><span class="status-badge">${reserva.estado}</span></td>
+            `;
+            tbody.appendChild(tr);
+        });
+
     } catch (error) {
-        console.error("Error al cargar citas:", error);
-        tabla.innerHTML = '<tr><td colspan="5" class="empty-state" style="color: red;">Error al conectar con la base de datos.</td></tr>';
+        console.error("Error al cargar la agenda:", error);
+        tbody.innerHTML = '<tr><td colspan="6" style="text-align: center; color: red;">Error al conectar con la base de datos.</td></tr>';
     }
 }
+
