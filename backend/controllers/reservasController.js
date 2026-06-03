@@ -5,11 +5,10 @@ const supabaseUrl = process.env.SUPABASE_URL;
 const supabaseKey = process.env.SUPABASE_KEY;
 const supabase = createClient(supabaseUrl, supabaseKey);
 
-// Función auxiliar para convertir "07:30 PM" a "19:30:00" para PostgreSQL
 function formatearHoraParaDB(horaStr) {
     if (!horaStr) return null;
     const partes = horaStr.split(' ');
-    if (partes.length !== 2) return horaStr; // Por si acaso
+    if (partes.length !== 2) return horaStr; 
     
     let [horas, minutos] = partes[0].split(':');
     const modificador = partes[1];
@@ -20,7 +19,6 @@ function formatearHoraParaDB(horaStr) {
     return `${horas.toString().padStart(2, '0')}:${minutos}:00`;
 }
 
-// 1. LEER RESERVAS (Para ocultar botones en el frontend)
 exports.obtenerReservas = async (req, res) => {
     try {
         const { data, error } = await supabase
@@ -29,7 +27,7 @@ exports.obtenerReservas = async (req, res) => {
 
         if (error) throw error;
 
-        // Postgres devuelve "19:30:00". Lo cortamos a "19:30" para que el frontend lo bloquee bien.
+        
         const reservasFormateadas = data.map(reserva => ({
             fecha: reserva.fecha,
             hora: reserva.hora ? reserva.hora.substring(0, 5) : null
@@ -42,14 +40,13 @@ exports.obtenerReservas = async (req, res) => {
     }
 };
 
-// 2. CREAR RESERVA
 exports.crearReserva = async (req, res) => {
     try {
         const { patientName, patientPhone, patientEmail, treatmentType, appointmentDate, appointmentTime, status } = req.body;
         
         const horaFormateada = formatearHoraParaDB(appointmentTime);
 
-        // Doble validación en la base de datos
+       
         const { data: existente } = await supabase
             .from('reservas')
             .select('*')
@@ -60,17 +57,16 @@ exports.crearReserva = async (req, res) => {
             return res.status(400).json({ error: "Ese horario acaba de ser ocupado por otra persona." });
         }
 
-        // Inserción con los NOMBRES EXACTOS de tu tabla SQL
         const { data, error } = await supabase
             .from('reservas')
             .insert([
                 {
                     nombre: patientName,
-                    email: patientEmail,         // <-- Match exacto
+                    email: patientEmail,         
                     telefono: patientPhone,
-                    tratamiento: treatmentType,  // <-- Match exacto
+                    tratamiento: treatmentType,  
                     fecha: appointmentDate,
-                    hora: horaFormateada,        // Formato 24h
+                    hora: horaFormateada,        
                     estado: status || 'Pendiente'
                 }
             ]);
@@ -84,7 +80,6 @@ exports.crearReserva = async (req, res) => {
     }
 };
 
-// 3. LEER TODAS LAS RESERVAS (Para el panel de Admin)
 exports.obtenerTodasLasReservas = async (req, res) => {
     try {
         const { data, error } = await supabase

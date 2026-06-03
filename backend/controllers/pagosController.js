@@ -1,8 +1,8 @@
-const stripe = require('stripe')(process.env.STRIPE_SECRET_KEY); // Asegúrate de tener tu clave secreta en el archivo .env
+const stripe = require('stripe')(process.env.STRIPE_SECRET_KEY); 
 
 exports.crearSesionPago = async (req, res) => {
     try {
-        // MAGIA AQUÍ: Detecta automáticamente si estás en localhost o en Render
+        
         const DOMAIN = req.headers.origin || 'https://lumina-dental-app.onrender.com';
 
         const session = await stripe.checkout.sessions.create({
@@ -10,18 +10,18 @@ exports.crearSesionPago = async (req, res) => {
             line_items: [
                 {
                     price_data: {
-                        currency: 'mxn', // Puedes cambiarlo a usd si prefieres
+                        currency: 'mxn', 
                         product_data: {
                             name: 'Reserva de Cita - Lumina Dental Studio',
                             description: 'Valoración inicial y apartado de agenda.',
                         },
-                        unit_amount: 50000, // Esto equivale a $500.00 MXN (Stripe usa centavos)
+                        unit_amount: 50000, 
                     },
                     quantity: 1,
                 },
             ],
             mode: 'payment',
-            // Usamos el DOMAIN dinámico para que Stripe sepa exactamente a dónde regresar
+            
             success_url: `${DOMAIN}/?pago=exito`,
             cancel_url: `${DOMAIN}/?pago=cancelado`,
         });
