@@ -1,0 +1,38 @@
+/* -----------------------------
+   BOTONES
+----------------------------- */
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 12px 24px;
+    border-radius: 50px;
+    font-weight: 600;
+    font-size: 1rem;
+    cursor: pointer;
+    text-decoration: none;
+    border: none;
+    transition: var(--transition);
+
+    &-primary {
+        background: var(--primary);
+        color: white;
+        box-shadow: 0 4px 14px rgba(14, 165, 233, 0.25);
+        
+        &:hover {
+            background: var(--primary-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(14, 165, 233, 0.4);
+        }
+    }
+
+    &-secondary {
+        background: var(--bg-light);
+        color: var(--primary);
+    }
+
+    &-lg { padding: 16px 32px; font-size: 1.125rem; }
+    &-xl { padding: 18px; font-size: 1.125rem; border-radius: var(--radius-md); }
+    &-full { width: 100%; }
+}

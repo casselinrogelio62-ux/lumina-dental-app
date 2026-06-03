@@ -3,9 +3,10 @@
   "version": "1.0.0",
   "description": "Sistema de reservas dentales",
   "main": "backend/server.js",
-  "scripts": {
+"scripts": {
     "start": "node backend/server.js",
-    "dev": "nodemon backend/server.js"
+    "dev": "nodemon backend/server.js",
+    "sass:watch": "sass --watch frontend/scss/styles.scss:frontend/styles.css"
   },
   "dependencies": {
     "@supabase/supabase-js": "^2.106.1",
@@ -16,6 +17,7 @@
     "stripe": "^22.1.1"
   },
   "devDependencies": {
-    "nodemon": "^3.1.14"
+    "nodemon": "^3.1.14",
+    "sass": "^1.100.0"
   }
 }
